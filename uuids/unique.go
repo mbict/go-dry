@@ -1,8 +1,10 @@
-package stringslice
+package uuids
 
-func Unique(elements []string) []string {
-	found := map[string]bool{}
-	result := []string{}
+import "github.com/satori/go.uuid"
+
+func Unique(elements []uuid.UUID) []uuid.UUID {
+	found := map[uuid.UUID]bool{}
+	result := []uuid.UUID{}
 
 	for v := range elements {
 		if found[elements[v]] != true {
