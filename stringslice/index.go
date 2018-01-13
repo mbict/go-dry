@@ -2,21 +2,21 @@ package stringslice
 
 import "strings"
 
-func Has(slice []string, value string) bool {
+func Index(slice []string, value string) int {
 	for i := range slice {
 		if slice[i] == value {
-			return true
+			return i
 		}
 	}
-	return false
+	return -1
 }
 
 // HasCI is case insensitve version of Has
-func HasCI(slice []string, value string) bool {
+func IndexCI(slice []string, value string) int {
 	for i := range slice {
 		if strings.EqualFold(slice[i], value) {
-			return true
+			return i
 		}
 	}
-	return false
+	return -1
 }
