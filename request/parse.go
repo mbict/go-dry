@@ -5,6 +5,7 @@ import (
 	"net/url"
 	"strconv"
 	"strings"
+	"github.com/satori/go.uuid"
 )
 
 func ParseInts(v string) ([]int, error) {
@@ -50,4 +51,22 @@ func ParseStrings(v string) ([]string, error) {
 		return nil, nil
 	}
 	return strs, nil
+}
+
+func ParseUUIDs(v string) ([]uuid.UUID, error) {
+	v = strings.TrimSpace(v)
+	if len(v) == 0 {
+		return nil, nil
+	}
+
+	var err error
+	rs := strings.Split(v, ",")
+	uuids := make([]uuid.UUID, len(rs))
+	for i, val := range rs {
+		uuids[i], err = uuid.FromString(val)
+		if err != nil {
+			return nil, fmt.Errorf("has a invalid uuid value `%s`", val)
+		}
+	}
+	return uuids, nil
 }
