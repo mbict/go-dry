@@ -1,9 +1,9 @@
 package main
 
 import (
-	"auth/domain/repository"
-	"github.com/mbict/go-dry/datamap"
+	"errors"
 	"fmt"
+	"github.com/mbict/go-dry/datamap"
 )
 
 type TestRepository interface {
@@ -76,7 +76,7 @@ func (r *testModelRepository) Save(model *TestModel) error {
 
 func NewTestRepository() TestRepository {
 	return &testModelRepository{
-		data: datamap.New(repository.ErrNoResult),
+		data: datamap.New(errors.New("no result")),
 	}
 }
 

@@ -2,10 +2,10 @@ package request
 
 import (
 	"fmt"
+	"github.com/satori/go.uuid"
 	"net/url"
 	"strconv"
 	"strings"
-	"github.com/satori/go.uuid"
 )
 
 func ParseInts(v string) ([]int, error) {

@@ -1,10 +1,10 @@
 package main
 
 import (
-	"auth/domain/repository"
-	"github.com/satori/go.uuid"
-	"github.com/mbict/go-dry/datamap"
+	"errors"
 	"fmt"
+	"github.com/mbict/go-dry/datamap"
+	"github.com/satori/go.uuid"
 )
 
 type TestUUIDRepository interface {
@@ -77,15 +77,15 @@ func (r *testUUIDModelRepository) Save(model *TestUUIDModel) error {
 
 func NewTestUUIDRepository() TestUUIDRepository {
 	return &testUUIDModelRepository{
-		data: datamap.NewUUID(repository.ErrNoResult),
+		data: datamap.NewUUID(errors.New("no result")),
 	}
 }
 
 func main() {
 	repo := NewTestUUIDRepository()
-	id := uuid.NewV4()
+	id := uuid.Must(uuid.NewV4())
 	repo.Save(&TestUUIDModel{Id: id, Name: "test"})
-	repo.Save(&TestUUIDModel{Id: uuid.NewV4(), Name: "test 2"})
+	repo.Save(&TestUUIDModel{Id: uuid.Must(uuid.NewV4()), Name: "test 2"})
 
 	findResult, err := repo.Find()
 	fmt.Printf("result Find:(%v) error:(%s)\n", findResult, err)

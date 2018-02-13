@@ -2,9 +2,9 @@ package database
 
 import (
 	"database/sql"
+	"github.com/go-sql-driver/mysql"
 	"github.com/lib/pq"
 	"github.com/mattn/go-sqlite3"
-	"github.com/go-sql-driver/mysql"
 )
 
 const (

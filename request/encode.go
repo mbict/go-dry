@@ -1,10 +1,10 @@
 package request
 
 import (
+	"bytes"
+	"github.com/satori/go.uuid"
 	"net/url"
 	"strconv"
-	"github.com/satori/go.uuid"
-	"bytes"
 )
 
 func EncodeInts(v []int) string {
