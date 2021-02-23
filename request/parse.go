@@ -2,7 +2,7 @@ package request
 
 import (
 	"fmt"
-	"github.com/satori/go.uuid"
+	"github.com/google/uuid"
 	"net/url"
 	"strconv"
 	"strings"
@@ -63,7 +63,7 @@ func ParseUUIDs(v string) ([]uuid.UUID, error) {
 	rs := strings.Split(v, ",")
 	uuids := make([]uuid.UUID, len(rs))
 	for i, val := range rs {
-		uuids[i], err = uuid.FromString(val)
+		uuids[i], err = uuid.Parse(val)
 		if err != nil {
 			return nil, fmt.Errorf("has a invalid uuid value `%s`", val)
 		}

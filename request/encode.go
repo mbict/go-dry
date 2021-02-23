@@ -2,7 +2,7 @@ package request
 
 import (
 	"bytes"
-	"github.com/satori/go.uuid"
+	"github.com/google/uuid"
 	"net/url"
 	"strconv"
 )

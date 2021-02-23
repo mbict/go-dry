@@ -1,10 +1,10 @@
 package uuids
 
-import "github.com/satori/go.uuid"
+import "github.com/google/uuid"
 
 func Index(slice []uuid.UUID, value uuid.UUID) int {
 	for i := range slice {
-		if uuid.Equal(slice[i], value) {
+		if slice[i] == value {
 			return i
 		}
 	}

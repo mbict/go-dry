@@ -3,8 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
+	"github.com/google/uuid"
 	"github.com/mbict/go-dry/datamap"
-	"github.com/satori/go.uuid"
 )
 
 type TestUUIDRepository interface {
@@ -83,9 +83,9 @@ func NewTestUUIDRepository() TestUUIDRepository {
 
 func main() {
 	repo := NewTestUUIDRepository()
-	id := uuid.Must(uuid.NewV4())
+	id := uuid.Must(uuid.NewUUID())
 	repo.Save(&TestUUIDModel{Id: id, Name: "test"})
-	repo.Save(&TestUUIDModel{Id: uuid.Must(uuid.NewV4()), Name: "test 2"})
+	repo.Save(&TestUUIDModel{Id: uuid.Must(uuid.NewUUID()), Name: "test 2"})
 
 	findResult, err := repo.Find()
 	fmt.Printf("result Find:(%v) error:(%s)\n", findResult, err)

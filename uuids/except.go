@@ -1,6 +1,6 @@
 package uuids
 
-import "github.com/satori/go.uuid"
+import "github.com/google/uuid"
 
 //Except returns a slice with uuid's from a who are not present in b
 func Except(a []uuid.UUID, b []uuid.UUID) []uuid.UUID {

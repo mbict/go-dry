@@ -1,6 +1,6 @@
 package uuids
 
-import "github.com/satori/go.uuid"
+import "github.com/google/uuid"
 
 func Unique(elements []uuid.UUID) []uuid.UUID {
 	found := map[uuid.UUID]bool{}
